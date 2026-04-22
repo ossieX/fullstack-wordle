@@ -1,0 +1,131 @@
+.page {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 16px;
+}
+
+.links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.links a {
+  color: #93c5fd;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.card {
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checkbox-label {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px !important;
+}
+
+input,
+button {
+  font-size: 16px;
+  padding: 8px;
+}
+
+input {
+  background: #0f172a;
+  color: #e5e7eb;
+  border: 1px solid #4b5563;
+  border-radius: 6px;
+}
+
+button {
+  background: #1d4ed8;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+}
+
+button:disabled {
+  background: #334155;
+  cursor: not-allowed;
+}
+
+button {
+  cursor: pointer;
+}
+
+.guess-form,
+.save-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status {
+  margin-top: 10px;
+  color: #d1d5db;
+}
+
+.error {
+  margin-top: 8px;
+  color: #fca5a5;
+  font-weight: 600;
+}
+
+.board {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+}
+
+.cell {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.correct {
+  background: #16a34a;
+}
+
+.misplaced {
+  background: #ca8a04;
+}
+
+.incorrect {
+  background: #dc2626;
+}

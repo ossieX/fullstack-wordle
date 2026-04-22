@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highscores</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0b1220;
+        color: #e5e7eb;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #111827;
+        padding: 24px;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        border: 1px solid #374151;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      .top-links {
+        margin-bottom: 16px;
+      }
+
+      .top-links a {
+        margin-right: 12px;
+        color: #93c5fd;
+        text-decoration: none;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid #374151;
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #1f2937;
+      }
+
+      .small {
+        color: #9ca3af;
+        font-size: 14px;
+      }
+
+      @media (max-width: 700px) {
+        .container {
+          margin: 16px;
+          padding: 16px;
+        }
+
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        tr {
+          border: 1px solid #374151;
+          margin-bottom: 10px;
+          border-radius: 8px;
+          padding: 8px;
+        }
+
+        td {
+          border: none;
+          padding: 6px 4px;
+        }
+
+        td::before {
+          content: attr(data-label);
+          display: inline-block;
+          width: 110px;
+          font-weight: 700;
+          color: #cbd5e1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top-links">
+        <a href="/">Spela</a>
+        <a href="/about">Om projektet</a>
+      </div>
+
+      <h1>Highscore-lista</h1>
+
+      <% if (scores.length === 0) { %>
+      <p>Ingen score finns ännu. Spela en runda och bli den första i listan.</p>
+      <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Namn</th>
+            <th>Tid</th>
+            <th>Antal gissningar</th>
+            <th>Inställningar</th>
+            <th>Gissningar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% scores.forEach(function(score, index) { %>
+          <tr>
+            <td data-label="#"><%= index + 1 %></td>
+            <td data-label="Namn"><%= score.playerName %></td>
+            <td data-label="Tid"><%= (score.timeMs / 1000).toFixed(2) %> s</td>
+            <td data-label="Antal gissningar"><%= score.guesses.length %></td>
+            <td data-label="Inställningar" class="small">
+              Längd: <%= score.settings.wordLength %><br />
+              Upprepade bokstäver:
+              <%= score.settings.allowRepeatedLetters ? 'Ja' : 'Nej' %>
+            </td>
+            <td data-label="Gissningar" class="small"><%= score.guesses.join(', ') %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </body>
+</html>
